@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div>sdvsdv</div>
+        <div>李晓龙</div>
         <router-view></router-view>
     </div>
 </template>
