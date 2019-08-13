@@ -1,19 +1,19 @@
 import { createApp } from './app'
 
 export default function (context) {
+  console.log('context', context);
   const { app, router, store } = createApp();
 
  return  new Promise((resolve, reject) => {
 
     const { url }= context;
 
-    console.log('urlurlurlurl'. url)
-
       router.push(url);
 
       router.onReady(() => {
         const matchedComponents = router.getMatchedComponents();
 
+        console.log('matchedComponents', matchedComponents.length);
 
         if (!matchedComponents.length) {
           return reject({ code: 404 })
@@ -36,9 +36,9 @@ export default function (context) {
           context.state = store.state;
 
           resolve(app)
-        }).catch(reject)
+        })
 
-      })
+      }, reject)
 
 
   })

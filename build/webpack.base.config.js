@@ -1,4 +1,3 @@
-/* webpack.server.js */
 const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 const projectRoot = path.resolve(__dirname, '..', 'src');

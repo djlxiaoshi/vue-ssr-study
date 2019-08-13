@@ -21,7 +21,7 @@ module.exports = merge(baseConfig, {
   target: 'node',
 
   // 对 bundle renderer 提供 source map 支持
-  devtool: 'source-map',
+  // devtool: 'source-map',
 
   // 此处告知 server bundle 使用 Node 风格导出模块(Node-style exports)
   output: {
@@ -45,10 +45,10 @@ module.exports = merge(baseConfig, {
   // 构建为单个 JSON 文件的插件。
   // 默认文件名为 `vue-ssr-server-bundle.json`
   plugins: [
-    new VueSSRServerPlugin(),
+    // new VueSSRServerPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.ssr.html',
-      template: resolve('./index.html'),
+      template: resolve('./index.ssr.html'),
       excludeChunks: ['server']
     })
   ]
