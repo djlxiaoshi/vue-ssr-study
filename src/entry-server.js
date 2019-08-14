@@ -38,7 +38,9 @@ export default function (context) {
           resolve(app)
         })
 
-      }, reject)
+      }, (error) => {
+        console.log(error);
+      })
 
 
   })

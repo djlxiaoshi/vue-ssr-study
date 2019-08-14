@@ -17,15 +17,16 @@ const renderer = createBundleRenderer(serverBundle, {
   // clientManifest: require('./dist/vue-ssr-client-manifest.json'),
 });
 
-router.get('/', async ctx => {
+app.use(koaStatic(path.resolve(__dirname, 'dist')));
+
+router.get('*', async ctx => {
   console.log('进来了');
   ctx.body = await new Promise((resolve, reject) => {
     //
     renderer.renderToString({title: 'DJLXS', url: ctx.req.url}, (err, data) => {
 
       if (err) {
-        console.log('err', err);
-        reject(err);
+        resolve(err.code);
         return;
       }
       resolve(data)
@@ -37,7 +38,6 @@ router.get('/', async ctx => {
 });
 
 app.use(router.routes());
-// app.use(koaStatic(path.resolve(__dirname, 'dist')));
 
 app.listen(3700, function () {
   console.log('server is listening on port 3700')

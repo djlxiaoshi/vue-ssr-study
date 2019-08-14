@@ -8,6 +8,8 @@
   };
 </script>
 
-<style scoped>
-
+<style scoped lang="less">
+ h1 {
+     background: red;
+ }
 </style>
