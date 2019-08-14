@@ -10,6 +10,6 @@
 
 <style scoped lang="less">
  h1 {
-     background: red;
+     background: green;
  }
 </style>
