@@ -3,6 +3,8 @@ import App from './App.vue';
 import { createRouter } from './router';
 import { createStore } from './store';
 
+Vue.config.productionTip = false; // 开启vuex 调试工具
+
 export function createApp (context) {
 
   // 创建 router 实例

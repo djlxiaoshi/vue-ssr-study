@@ -1,5 +1,9 @@
 <template>
-    <h1>Home Page</h1>
+    <div>
+        <h1>Home Page</h1>
+        <div>我的名字叫做{{ this.$store.state.name }}</div>
+    </div>
+
 </template>
 
 <script>

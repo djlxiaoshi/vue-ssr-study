@@ -1,7 +1,6 @@
 // store.js
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from 'axios';
 
 Vue.use(Vuex)
 
@@ -10,21 +9,23 @@ Vue.use(Vuex)
 export function createStore () {
   return new Vuex.Store({
     state: {
-      data: {}
+      name: ''
     },
     actions: {
-      getData ({ commit }, key) {
-        // `store.dispatch()` 会返回 Promise，
-        // 以便我们能够知道数据在何时更新
-        return axios.get('https://easy-mock.com/mock/5cc3ce1b928aac6b3a70b2a6/data/getData').then(data => {
-          const value = data.data.name;
-          commit('setData', { key, value })
+      getName ({ commit }, value) {
+        // `store.dispatch()` 会返回 Promise，以便我们能够知道数据在何时更新
+        return new Promise((resolve, reject) => {
+          setTimeout(function () {
+            commit('setName', value);
+            resolve();
+          }, 500)
         })
+
       }
     },
     mutations: {
-      setData (state, { key, value }) {
-        Vue.set(state.data, key, value)
+      setName (state, value) {
+        state.name = value;
       }
     }
   })
