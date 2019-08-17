@@ -37,9 +37,10 @@
     "dev": "npm-run-all build-client build-server server",
     "server": "nodemon --inspect ./server.js",
     "dev-client": "webpack-dev-server --config ./build/webpack.client.config.js --mode development",
-    "build-client": "webpack --config ./build/webpack.client.config.js --watch --mdoe production",
-    "build-server": "webpack --config ./build/webpack.server.config.js --watch --mdoe production",
-    "build": "npm-run-all build-client build-server"
+    "build-client": "webpack --config ./build/webpack.client.config.js --watch --mode production --progress",
+    "build-server": "webpack --config ./build/webpack.server.config.js --watch --mode production --progress",
+    "build": "npm-run-all build-client build-server",
+    "build-test": "webpack --config ./build/webpack.test.config.js --watch --mode production --progress"
   },
   "author": "",
   "license": "ISC"

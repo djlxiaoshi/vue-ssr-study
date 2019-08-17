@@ -38,10 +38,10 @@ export default function (context) {
         resolve(app)
 
       }).catch((error) => {
-        console.log('error哦', error)
+        console.log('error', error)
       })
 
-    })
+    }, reject)
 
   })
 }

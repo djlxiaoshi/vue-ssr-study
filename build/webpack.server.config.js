@@ -21,13 +21,14 @@ module.exports = merge(baseConfig, {
   target: 'node',
 
   // 对 bundle renderer 提供 source map 支持
-  // devtool: 'source-map',
+  devtool: 'source-map',
 
   // 此处告知 server bundle 使用 Node 风格导出模块(Node-style exports)
   output: {
     libraryTarget: 'commonjs2',
     path: path.join(__dirname, '..', 'dist'),
-    filename: 'bundle.server.js'
+    filename: 'bundle.server.js',
+    chunkFilename: '[name].bundle.js'
   },
 
   // https://webpack.js.org/configuration/externals/#function
