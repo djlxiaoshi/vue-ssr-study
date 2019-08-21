@@ -1,8 +1,8 @@
-import { createApp } from './app'
+import { createApp } from './app';
 
 export default function (context) {
   console.log('context', context);
-  const {app, router, store} = createApp();
+  const { app, router, store } = createApp();
 
   return new Promise((resolve, reject) => {
 
@@ -16,7 +16,8 @@ export default function (context) {
       console.log('matchedComponents', matchedComponents.length);
 
       if (!matchedComponents.length) {
-        return reject({code: 404})
+        // eslint-disable-next-line prefer-promise-reject-errors
+        return reject({ code: 404 });
       }
 
       // 对所有匹配的路由组件调用 `asyncData()`
@@ -25,7 +26,7 @@ export default function (context) {
           return Component.asyncData({
             store,
             route: router.currentRoute
-          })
+          });
         }
       })).then(() => {
         // 在所有预取钩子(preFetch hook) resolve 后，
@@ -35,14 +36,13 @@ export default function (context) {
         // 状态将自动序列化为 `window.__INITIAL_STATE__`，并注入 HTML。
         context.state = store.state;
 
-        resolve(app)
+        resolve(app);
 
       }).catch((error) => {
-        console.log('error', error)
-      })
+        console.log('error', error);
+      });
 
-    }, reject)
+    }, reject);
 
-  })
+  });
 }
-
